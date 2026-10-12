@@ -1,0 +1,24 @@
+.filters { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.search { position: relative; flex: 1 1 280px; }
+.search svg { position: absolute; inset-block: 0; margin: auto 0; inset-inline-start: 14px; color: var(--muted); pointer-events: none; }
+.search :global(.input) { padding-inline-start: 42px; }
+.dept { flex: 0 1 220px; width: auto; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.card {
+  display: flex; flex-direction: column; gap: 14px; padding: 18px; color: inherit;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: var(--shadow-1);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.card:hover { text-decoration: none; border-color: var(--brand); box-shadow: var(--shadow-2); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.code { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.02em; }
+.meta { display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); font-size: 0.9rem; }
+.meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}

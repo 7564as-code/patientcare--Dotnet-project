@@ -1,0 +1,5 @@
+.wrap { display: inline-flex; align-items: center; gap: 8px; }
+.dots { display: inline-flex; gap: 3px; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid currentColor; opacity: 0.45; }
+.dots i.on { background: currentColor; opacity: 1; }
+.text { font-size: 0.85rem; color: var(--ink-soft); }

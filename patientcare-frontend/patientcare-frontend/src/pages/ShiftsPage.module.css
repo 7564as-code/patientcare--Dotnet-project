@@ -1,0 +1,16 @@
+.nav { display: inline-flex; align-items: center; background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-sm); overflow: hidden; }
+.nav button { display: grid; place-items: center; min-width: 44px; height: 44px; padding: 0 12px; border: 0; background: transparent; cursor: pointer; color: var(--ink-soft); }
+.nav button:hover { background: var(--brand-50); color: var(--brand); }
+.todayBtn { font-weight: 500; border-inline: 1px solid var(--line) !important; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 14px; font-size: 0.85rem; color: var(--ink-soft); }
+.legend li { display: inline-flex; align-items: center; gap: 7px; }
+.legend i { width: 14px; height: 14px; border-radius: 4px; border: 1px solid transparent; border-inline-start-width: 4px; }
+.kFull { background: var(--indigo-50); border-color: var(--indigo) !important; }
+.kPartial { background: var(--brand-50); border-color: var(--brand) !important; }
+.kEmpty { background: var(--amber-50); border: 1.5px dashed var(--amber-line) !important; border-inline-start: 4px solid var(--amber) !important; }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
+.withPanel { grid-template-columns: minmax(0, 1fr) 340px; }
+.calWrap { min-width: 0; }
+.panel { position: sticky; top: 20px; }
+.panelCard { padding: 18px; max-height: calc(100vh - 40px); overflow-y: auto; }
+.emptyWeek { margin-top: 14px; text-align: center; color: var(--muted); }

@@ -1,0 +1,46 @@
+# Render Blueprint. מיועד למאגר (repo) ששורשו הוא התיקייה שמכילה את patientcare-backend ואת patientcare-frontend.
+databases:
+  - name: patientcare-db
+    databaseName: patientcare
+    user: patientcare
+    plan: free
+
+services:
+  # ה-API (ASP.NET Core ב-Docker)
+  - type: web
+    name: patientcare-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./patientcare-backend/PatientCare-Dotnet-main/Dockerfile
+    dockerContext: ./patientcare-backend/PatientCare-Dotnet-main
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        fromDatabase:
+          name: patientcare-db
+          property: connectionString
+      - key: Jwt__Key
+        generateValue: true
+      - key: Cors__AllowedOrigins
+        sync: false   # כתובת האתר, למשל https://patientcare-web.onrender.com
+      - key: Seed__DemoPassword
+        sync: false   # לא חובה
+      - key: Seed__AdminEmail
+        sync: false   # לא חובה
+
+  # האתר (React + Vite, אתר סטטי)
+  - type: web
+    name: patientcare-web
+    runtime: static
+    rootDir: ./patientcare-frontend/patientcare-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        sync: false   # כתובת ה-API עם /api בסוף, למשל https://patientcare-api.onrender.com/api

@@ -1,0 +1,16 @@
+# .NET
+bin/
+obj/
+logs/
+.vs/
+*.user
+*.suo
+
+# Node
+node_modules/
+dist/
+
+# סודות מקומיים
+.env
+.env.local
+appsettings.Local.json

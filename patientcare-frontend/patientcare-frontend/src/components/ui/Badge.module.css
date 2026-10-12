@@ -1,0 +1,10 @@
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
+  font-size: 0.78rem; font-weight: 500; line-height: 1.4; border-radius: 999px; white-space: nowrap;
+}
+.neutral { background: #eaeff0; color: var(--ink-soft); }
+.brand { background: var(--brand-50); color: var(--brand); }
+.indigo { background: var(--indigo-50); color: var(--indigo); }
+.amber { background: var(--amber-50); color: var(--amber); }
+.rose { background: var(--rose-50); color: var(--rose); }
+.green { background: var(--green-50); color: var(--green); }

@@ -1,0 +1,23 @@
+.wrap { display: flex; flex-direction: column; gap: 22px; }
+.hero { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px; border-radius: var(--r-md); border-inline-start: 4px solid var(--brand); background: var(--brand-50); }
+.full { background: var(--indigo-50); border-inline-start-color: var(--indigo); }
+.empty { background: var(--amber-50); border-inline-start-color: var(--amber); }
+.kicker { display: block; font-size: 0.8rem; color: var(--ink-soft); }
+.code { display: inline-flex; align-items: center; gap: 6px; font-size: 1.4rem; font-weight: 600; color: var(--ink); }
+.close { display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 10px; background: rgba(255, 255, 255, 0.7); cursor: pointer; color: var(--ink-soft); }
+.close:hover { background: #fff; color: var(--ink); }
+.facts { display: flex; flex-direction: column; gap: 14px; margin: 0; }
+.facts div { display: grid; grid-template-columns: 112px 1fr; gap: 10px; align-items: baseline; }
+.facts dt { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.88rem; }
+.facts dd { margin: 0; font-weight: 500; }
+.slotsHead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.slots { display: flex; flex-direction: column; gap: 6px; }
+.slots li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--r-sm); font-size: 0.92rem; }
+.filled { background: var(--surface-2); border: 1px solid var(--line); }
+.open { color: var(--muted); border: 1.5px dashed var(--line-strong); }
+.tagsTitle { margin-bottom: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.actions { display: flex; flex-direction: column; gap: 10px; padding-top: 6px; border-top: 1px solid var(--line); margin-top: 2px; padding-top: 18px; }
+.hint { display: flex; gap: 8px; align-items: flex-start; color: var(--muted); font-size: 0.85rem; line-height: 1.45; }
+.hint svg { flex: none; margin-top: 2px; }
+.slots li span { flex: 1; }
