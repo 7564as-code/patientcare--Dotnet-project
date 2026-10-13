@@ -12,5 +12,5 @@ public record CaregiverSummaryResponse(
     CaregiverRole Role);
 
 public record ChangeCaregiverRoleRequest(
-    [property: EnumDataType(typeof(CaregiverRole), ErrorMessage = "התפקיד שנבחר אינו תקין.")]
+    [EnumDataType(typeof(CaregiverRole), ErrorMessage = "התפקיד שנבחר אינו תקין.")]
     CaregiverRole Role);

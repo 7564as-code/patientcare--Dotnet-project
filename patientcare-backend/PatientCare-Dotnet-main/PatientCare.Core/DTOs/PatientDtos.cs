@@ -6,13 +6,13 @@ namespace PatientCare.Core.DTOs;
 /// <param name="MedicalCode">שם או כינוי של החולה (נשאר בשם הישן לתאימות).</param>
 /// <param name="Department">מקום הטיפול (נשאר בשם הישן לתאימות).</param>
 public record CreatePatientRequest(
-    [property: Required(ErrorMessage = "יש להזין שם לחולה."),
+    [Required(ErrorMessage = "יש להזין שם לחולה."),
                StringLength(50, MinimumLength = 1, ErrorMessage = "שם החולה יכול להכיל עד 50 תווים.")]
     string MedicalCode,
-    [property: EnumDataType(typeof(Gender), ErrorMessage = "המין שנבחר אינו תקין.")]
+    [EnumDataType(typeof(Gender), ErrorMessage = "המין שנבחר אינו תקין.")]
     Gender PatientGender,
     DateTime DateOfBirth,
-    [property: Required(ErrorMessage = "יש להזין מקום טיפול."),
+    [Required(ErrorMessage = "יש להזין מקום טיפול."),
                StringLength(100, MinimumLength = 1, ErrorMessage = "מקום הטיפול יכול להכיל עד 100 תווים.")]
     string Department);
 
@@ -28,7 +28,7 @@ public record PatientResponse(
     bool IsManager);
 
 public record ChangePatientManagerRequest(
-    [property: Range(1, int.MaxValue, ErrorMessage = "יש לבחור מנהל חדש.")]
+    [Range(1, int.MaxValue, ErrorMessage = "יש לבחור מנהל חדש.")]
     int NewManagerCaregiverId);
 
 public record PatientMemberResponse(
@@ -39,6 +39,6 @@ public record PatientMemberResponse(
 public record InviteCodeResponse(string InviteCode);
 
 public record JoinPatientRequest(
-    [property: Required(ErrorMessage = "יש להזין קוד הזמנה."),
+    [Required(ErrorMessage = "יש להזין קוד הזמנה."),
                StringLength(16, ErrorMessage = "קוד ההזמנה ארוך מדי.")]
     string InviteCode);

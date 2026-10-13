@@ -4,15 +4,15 @@ using PatientCare.Core.Enums;
 namespace PatientCare.Core.DTOs;
 
 public record CreateCareShiftRequest(
-    [property: Range(1, int.MaxValue, ErrorMessage = "יש לבחור חולה.")]
+    [Range(1, int.MaxValue, ErrorMessage = "יש לבחור חולה.")]
     int PatientId,
     DateTime StartTime,
     DateTime EndTime,
-    [property: EnumDataType(typeof(GenderRequirement), ErrorMessage = "דרישת המין שנבחרה אינה תקינה.")]
+    [EnumDataType(typeof(GenderRequirement), ErrorMessage = "דרישת המין שנבחרה אינה תקינה.")]
     GenderRequirement RequiredGender,
-    [property: Range(1, 100, ErrorMessage = "מספר בני המשפחה במשמרת חייב להיות גדול מאפס.")]
+    [Range(1, 100, ErrorMessage = "מספר בני המשפחה במשמרת חייב להיות גדול מאפס.")]
     int Capacity,
-    [property: MaxLength(20, ErrorMessage = "אפשר להוסיף עד 20 תגיות.")]
+    [MaxLength(20, ErrorMessage = "אפשר להוסיף עד 20 תגיות.")]
     List<string>? Tags);
 
 /// <summary>בן משפחה שמשובץ למשמרת.</summary>
