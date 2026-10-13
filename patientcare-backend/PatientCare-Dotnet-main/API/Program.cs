@@ -171,6 +171,9 @@ try
     });
 
     var app = builder.Build();
+    app.Logger.LogInformation(
+    "CORS allowed origins: {AllowedOrigins}",
+    allowedOrigins.Length > 0 ? string.Join(", ", allowedOrigins) : "(none)");
 
     // מחיל מיגרציות ממתינות בעליית השרת (גם ב-Render). נתוני דמו נזרעים רק אם הוגדרה סיסמת דמו.
     using (var scope = app.Services.CreateScope())

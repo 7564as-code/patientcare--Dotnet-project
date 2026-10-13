@@ -3,7 +3,10 @@ import { tokenStorage } from '@/auth/tokenStorage';
 import type { ApiErrorBody } from '@/types/dto';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  // בפיתוח: proxy של Vite ל-/api. בפרודקשן (Render): כתובת ה-API; אפשר לדרוס עם VITE_API_URL.
+  baseURL:
+    import.meta.env.VITE_API_URL ||
+    (import.meta.env.PROD ? 'https://patientcare-api-c6vb.onrender.com/api' : '/api'),
   headers: { 'Content-Type': 'application/json' },
 });
 
