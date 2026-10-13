@@ -20,6 +20,14 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
+/** מוודא שתשובת השרת באמת מכילה טוקן (אחרת כנראה VITE_API_URL לא מוגדר והבקשה לא הגיעה ל-API). */
+function assertAuthResponse(res: unknown): asserts res is { token: string; fullName?: string; expiresAt: string } {
+  const r = res as { token?: unknown } | null;
+  if (!r || typeof r !== 'object' || typeof r.token !== 'string' || !r.token) {
+    throw new Error('תשובה לא תקינה מהשרת. בדוק שכתובת ה-API (VITE_API_URL) מוגדרת נכון.');
+  }
+}
+
 function readUser(): AuthUser | null {
   const stored = tokenStorage.get();
   if (!stored || isExpired(stored.token)) {
@@ -27,7 +35,7 @@ function readUser(): AuthUser | null {
     return null;
   }
   const claims = parseToken(stored.token);
-  return { caregiverId: claims?.caregiverId ?? null, fullName: stored.fullName, email: claims?.email ?? null };
+  return { caregiverId: claims?.caregiverId ?? null, fullName: stored.fullName ?? claims?.name ?? '', email: claims?.email ?? null };
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -40,13 +48,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback(async (email: string, password: string) => {
     const res = await authApi.login({ email, password });
-    tokenStorage.set({ token: res.token, fullName: res.fullName, expiresAt: res.expiresAt });
+    assertAuthResponse(res);
+    tokenStorage.set({ token: res.token, fullName: res.fullName ?? '', expiresAt: res.expiresAt });
     setUser(readUser());
   }, []);
 
   const register = useCallback(async (body: RegisterRequest) => {
     const res = await authApi.register(body);
-    tokenStorage.set({ token: res.token, fullName: res.fullName, expiresAt: res.expiresAt });
+    assertAuthResponse(res);
+    tokenStorage.set({ token: res.token, fullName: res.fullName ?? '', expiresAt: res.expiresAt });
     setUser(readUser());
   }, []);
 

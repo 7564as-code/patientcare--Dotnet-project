@@ -25,7 +25,7 @@ export function DashboardPage() {
     .sort((a, b) => parseApiDate(a.startTime).getTime() - parseApiDate(b.startTime).getTime());
   const openSlots = upcoming.filter((x) => !x.isFull);
   const myUpcoming = upcoming.filter((x) => x.caregivers.some((c) => c.caregiverId === user?.caregiverId));
-  const firstName = user?.fullName.split(' ')[0] ?? '';
+  const firstName = user?.fullName?.split(' ')[0] ?? '';
 
   const loading = patients.loading || shifts.loading;
   const error = patients.error ?? shifts.error;
