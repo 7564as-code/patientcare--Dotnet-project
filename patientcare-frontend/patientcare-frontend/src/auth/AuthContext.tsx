@@ -54,6 +54,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const register = useCallback(async (body: RegisterRequest) => {
+    console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
     const res = await authApi.register(body);
     assertAuthResponse(res);
     tokenStorage.set({ token: res.token, fullName: res.fullName ?? '', expiresAt: res.expiresAt });
